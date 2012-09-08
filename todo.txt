@@ -1,0 +1,2 @@
+variants
+e.g.: Aesthir Glider ( http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=3041 )

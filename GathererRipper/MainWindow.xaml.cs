@@ -28,22 +28,29 @@ namespace GathererRipper
         {
             base.OnInitialized(e);
 
-            var ripper = new MagicRipper.Ripper();
-            var names = new List<string>();
-            var cards = ripper.GetCards(new MagicRipper.Expansion("Alara Reborn"),
-                printNumCards);
-            foreach (var card in cards)
-            {
-                System.Diagnostics.Debug.WriteLine(card.Name);
-                names.Add(card.Name);
-            }
-            textBlock.Text = string.Join(", ", names);
+            //var ripper = new MagicRipper.Ripper();
+            //ripper.ExpansionCardsDownloading += new EventHandler<MagicRipper.ExpansionCardsDownloadingEventArgs>(ripper_ExpansionCardsDownloading);
+            //ripper.CardDownloading += new EventHandler<MagicRipper.CardDownloadingEventArgs>(ripper_CardDownloading);
+            //var names = new List<string>();
+            //var cards = ripper.GetCards(new MagicRipper.Expansion("Alara Reborn"));
+            //foreach (var card in cards)
+            //{
+            //    System.Diagnostics.Debug.WriteLine(card.Name);
+            //    names.Add(card.Name);
+            //}
+            //textBlock.Text = string.Join(", ", names);
         }
 
-        private void printNumCards(int numCards)
+        void ripper_CardDownloading(object sender, MagicRipper.CardDownloadingEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Number of cards: {0}",
-                numCards);
+            System.Diagnostics.Debug.WriteLine("Going to download card with id={0}",
+                e.MultiverseId);
+        }
+
+        void ripper_ExpansionCardsDownloading(object sender, MagicRipper.SetCardsDownloadingEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Going to download {0} cards for {1}",
+                e.NumCards, e.Set.Name);
         }
     }
 }

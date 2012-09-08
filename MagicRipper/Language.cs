@@ -15,6 +15,10 @@ namespace MagicRipper
         Russian,
         ChineseSimplified,
         Portuguese,
-        Spanish
+        Spanish,
+        Italian,
+        ChineseTraditional,
+        PortugueseBrazil,
+        Korean
     }
 }

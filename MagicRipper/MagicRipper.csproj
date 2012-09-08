@@ -42,11 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Card.cs" />
-    <Compile Include="Expansion.cs" />
+    <Compile Include="CardDownloadingEventArgs.cs" />
+    <Compile Include="BaseCardDownloadingEventArgs.cs" />
+    <Compile Include="MultipartLanguageCompatibilityException.cs" />
+    <Compile Include="SetCardsDownloadedEventArgs.cs" />
+    <Compile Include="Set.cs" />
+    <Compile Include="SetCardsDownloadingEventArgs.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="Rarity.cs" />
     <Compile Include="Ripper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebClientExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,11 +5,11 @@ using System.Text;
 
 namespace MagicRipper
 {
-    public class Expansion
+    public class Set
     {
         public readonly string Name;
 
-        public Expansion(string name)
+        public Set(string name)
         {
             Name = name;
         }

@@ -7,6 +7,7 @@ namespace MagicRipper
 {
     public enum Rarity
     {
+        BasicLand,
         Common,
         Uncommon,
         Rare,
