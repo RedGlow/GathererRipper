@@ -69,3 +69,5 @@ CREATE TABLE IF NOT EXISTS Card (
 	FOREIGN KEY(RarityId)   REFERENCES Rarity(Id),
 	FOREIGN KEY(LanguageId) REFERENCES Language(Id)
 );
+
+CREATE INDEX CardSetLanguage ON Card(SetName, LanguageId);

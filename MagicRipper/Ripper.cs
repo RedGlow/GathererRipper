@@ -43,7 +43,11 @@ namespace MagicRipper
                 {
                     var match = expansionRegex.Match(lines[i]);
                     if (match.Groups.Count > 1)
-                        yield return new Set(match.Groups[1].Value);
+                    {
+                        var name = match.Groups[1].Value;
+                        if(name != "Unglued" && name != "Unhinged")
+                            yield return new Set(name);
+                    }
                     i++;
                 }
             }
@@ -109,10 +113,14 @@ namespace MagicRipper
                             var match = numCardsRegex.Match(lines[i]);
                             if (match.Groups.Count > 1)
                             {
+                                var numCards = int.Parse(match.Groups[1].Value);
+                                if (expansion.Name == "Ninth Edition")
+                                    numCards--; // Sea Eagle, from 8th edition, appears here
+                                                // too, for some unknown reason
                                 var handler = ExpansionCardsDownloading;
                                 if (handler != null)
                                     handler(this, new SetCardsDownloadingEventArgs(
-                                        expansion, int.Parse(match.Groups[1].Value)));
+                                        expansion, numCards));
                                 numCardsCalled = true;
                                 break;
                             }
@@ -142,9 +150,9 @@ namespace MagicRipper
                     }
 
                     // find the cards inside the listing
-                    while (!cardsStartRegex.IsMatch(lines[i]))
+                    while (i < lines.Length && !cardsStartRegex.IsMatch(lines[i]))
                         i++;
-                    while (!lines[i].Contains(cardsEndString))
+                    while (i < lines.Length && !lines[i].Contains(cardsEndString))
                     {
                         if (lines[i].Length > 5000)
                         {
@@ -292,6 +300,8 @@ namespace MagicRipper
                 { "Uncommon", Rarity.Uncommon },
                 { "Rare", Rarity.Rare },
                 { "Mythic Rare", Rarity.MythicRare },
+                { "Special", Rarity.Special },
+                { "", Rarity.Unset },
             };
 
         private ICollection<Card> getCard(WebClient webClient, int baseMultiverseId,
@@ -563,10 +573,10 @@ namespace MagicRipper
         private static string parseManaCost(Dictionary<string, string> data)
         {
             return data.ContainsKey("Mana Cost") ?
-                                string.Join("",
-                                    (from Match symbolMatch in manaCostImagesRegex.Matches(data["Mana Cost"])
-                                     select "{" + costSymbolRegex.Match(symbolMatch.Value).Groups[1].Value + "}")) :
-                                null;
+                string.Join("",
+                    (from Match symbolMatch in manaCostImagesRegex.Matches(data["Mana Cost"])
+                     select "{" + costSymbolRegex.Match(symbolMatch.Value).Groups[1].Value + "}")) :
+                null;
         }
 
         private static string parseTextTags(Dictionary<string, string> data,
@@ -580,6 +590,12 @@ namespace MagicRipper
                 .Replace("</div>", "\n")
                 .Replace("<i>", "{-I}")
                 .Replace("</i>", "{-/I}");
+            if (key == "Flavor Text" && data.ContainsKey("Card Name") &&
+                data["Card Name"] == "Drain d'essence")
+            {
+                // epic fail in this page: invalid html
+                cardText = cardText.Replace("<<", "«");
+            }
             cardText = textCostRegex.Replace(cardText, (Match m) => "{" + m.Groups[1].Value + "}");
             cardText = cardText.Trim();
             Debug.Assert(!cardText.Contains("<"), "There are still tags inside card text");

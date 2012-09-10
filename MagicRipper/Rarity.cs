@@ -11,6 +11,8 @@ namespace MagicRipper
         Common,
         Uncommon,
         Rare,
-        MythicRare
+        MythicRare,
+        Special,
+        Unset
     }
 }

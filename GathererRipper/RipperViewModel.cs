@@ -40,7 +40,7 @@ namespace GathererRipper
 
         // Using a DependencyProperty as the backing store for CurrentlyProcessedExpansionNumber.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CurrentlyProcessedExpansionNumberProperty =
-            DependencyProperty.Register("CurrentlyProcessedExpansionNumber", typeof(int), typeof(RipperViewModel), new UIPropertyMetadata(0));
+            DependencyProperty.Register("CurrentlyProcessedExpansionNumber", typeof(int), typeof(RipperViewModel), new UIPropertyMetadata(0, new PropertyChangedCallback(totalProgressChanged)));
 
         
 
@@ -52,7 +52,7 @@ namespace GathererRipper
 
         // Using a DependencyProperty as the backing store for NumExpansions.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty NumExpansionsProperty =
-            DependencyProperty.Register("NumExpansions", typeof(int), typeof(RipperViewModel), new UIPropertyMetadata(0));
+            DependencyProperty.Register("NumExpansions", typeof(int), typeof(RipperViewModel), new UIPropertyMetadata(0, new PropertyChangedCallback(totalProgressChanged)));
 
 
 
@@ -64,7 +64,7 @@ namespace GathererRipper
 
         // Using a DependencyProperty as the backing store for currentlyProcessedCardsNumber.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CurrentlyProcessedCardsNumberProperty =
-            DependencyProperty.Register("CurrentlyProcessedCardsNumber", typeof(int), typeof(RipperViewModel), new UIPropertyMetadata(0));
+            DependencyProperty.Register("CurrentlyProcessedCardsNumber", typeof(int), typeof(RipperViewModel), new UIPropertyMetadata(0, new PropertyChangedCallback(totalProgressChanged)));
 
 
 
@@ -76,7 +76,40 @@ namespace GathererRipper
 
         // Using a DependencyProperty as the backing store for currentlyProcessedCardNumber.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CurrentlyProcessedCardNumberProperty =
-            DependencyProperty.Register("CurrentlyProcessedCardNumber", typeof(int), typeof(RipperViewModel), new UIPropertyMetadata(0));
+            DependencyProperty.Register("CurrentlyProcessedCardNumber", typeof(int), typeof(RipperViewModel), new UIPropertyMetadata(0, new PropertyChangedCallback(totalProgressChanged)));
+
+
+
+        public double TotalProgress
+        {
+            get { return (double)GetValue(TotalProgressProperty); }
+            set { SetValue(TotalProgressProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TotalProgress.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TotalProgressProperty =
+            DependencyProperty.Register("TotalProgress", typeof(double), typeof(RipperViewModel), new UIPropertyMetadata(0.0));
+
+        private static void totalProgressChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ripperViewModel = (RipperViewModel)d;
+            var processedExpansions = ripperViewModel.CurrentlyProcessedExpansionNumber;
+            var numExpansions = ripperViewModel.NumExpansions;
+            var processedCards = ripperViewModel.CurrentlyProcessedCardNumber;
+            var numCards = ripperViewModel.CurrentlyProcessedCardsNumber;
+
+            double result = 0.0;
+            if (numExpansions != 0)
+            {
+                result = (double)processedExpansions / (double)numExpansions;
+                if (numCards != 0)
+                {
+                    result += (double)processedCards / (double)numCards / (double)numExpansions;
+                }
+            }
+
+            ripperViewModel.TotalProgress = result;
+        }
 
 
 
@@ -114,6 +147,7 @@ namespace GathererRipper
         // Using a DependencyProperty as the backing store for Running.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty RunningProperty =
             DependencyProperty.Register("Running", typeof(bool), typeof(RipperViewModel), new UIPropertyMetadata(false));
+
 
 
         private class StartCommand : ICommand
@@ -205,6 +239,14 @@ namespace GathererRipper
                             {
                                 System.Diagnostics.Debug.WriteLine("base id {0}, part {1} exists",
                                     e.BaseMultiverseId, e.Part);
+
+                                // update interface
+                                runIn(() =>
+                                {
+                                    CurrentlyProcessedCardName = e.Part;
+                                    CurrentlyProcessedCardLanguage = string.Empty;
+                                }, scheduler);
+
                                 e.Cancel = true;
                             }
                             else
@@ -233,6 +275,13 @@ namespace GathererRipper
                     // run over all the expansions
                     for (int i = 0; i < expansions.Count; i++)
                     {
+                        // update interface with current expansion data
+                        runIn(() =>
+                        {
+                            CurrentlyProcessedExpansionName = expansions[i].Name;
+                            CurrentlyProcessedExpansionNumber = i;
+                        }, scheduler);
+
                         // check if we need to download the set
                         if (dbManager.SetExists(expansions[i].Name) &&
                             dbManager.IsSetDownloaded(expansions[i].Name))
@@ -242,13 +291,6 @@ namespace GathererRipper
                                 new object[] { expansions[i].Name });
                             continue;
                         }
-
-                        // update interface with current expansion data
-                        runIn(() =>
-                        {
-                            CurrentlyProcessedExpansionName = expansions[i].Name;
-                            CurrentlyProcessedExpansionNumber = i;
-                        }, scheduler);
 
                         // get all cards of the expansion
                         foreach (var cards in ripper.GetCards(expansions[i]))
@@ -273,6 +315,9 @@ namespace GathererRipper
                     }
                 }).ContinueWith(t =>
                 {
+                    CurrentlyProcessedCardName = string.Empty;
+                    CurrentlyProcessedCardLanguage = string.Empty;
+                    CurrentlyProcessedExpansionName = string.Empty;
                     Running = false;
                 }, scheduler);
         }
