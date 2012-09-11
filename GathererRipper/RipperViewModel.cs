@@ -200,11 +200,7 @@ namespace GathererRipper
 
                     // get the expansions
                     var ripper = new Ripper();
-                    var expansions = (
-                        from e in ripper.GetExpansions()
-                        orderby e.Name == "Apocalypse" ? 0 : 1
-                        select e)
-                        .ToList();
+                    var expansions = ripper.GetExpansions().ToList();
                     runIn(() => { NumExpansions = expansions.Count; }, scheduler);
 
                     // update number of cards of the expansion when starting a new expansion
