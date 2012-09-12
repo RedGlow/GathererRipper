@@ -44,7 +44,9 @@
     <Compile Include="Card.cs" />
     <Compile Include="CardDownloadingEventArgs.cs" />
     <Compile Include="BaseCardDownloadingEventArgs.cs" />
+    <Compile Include="HtmlDownloadSucceededEventArgs.cs" />
     <Compile Include="MultipartLanguageCompatibilityException.cs" />
+    <Compile Include="HtmlDownloadErrorEventArgs.cs" />
     <Compile Include="SetCardsDownloadedEventArgs.cs" />
     <Compile Include="Set.cs" />
     <Compile Include="SetCardsDownloadingEventArgs.cs" />

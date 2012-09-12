@@ -12,10 +12,11 @@
             ProgressState="{Binding Path=Running, Converter={StaticResource BooleanToProgressStateConverter}}"
             ProgressValue="{Binding Path=TotalProgress}" />
     </Window.TaskbarItemInfo>
-    <Grid Margin="0,0,0,10">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Grid Visibility="{Binding Path=Running, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid.RowDefinitions>
@@ -33,6 +34,11 @@
             <Label Content="{Binding Path=CurrentlyProcessedCardLanguage}" Grid.Row="4" Name="label3" HorizontalAlignment="Center" FontSize="9" />
             <ProgressBar Grid.Row="5" Name="progressBar2" Height="50" Value="{Binding Path=CurrentlyProcessedCardNumber}" Maximum="{Binding Path=CurrentlyProcessedCardsNumber}" />
         </Grid>
-        <Button Content="Start!" Grid.Row="1" Height="35" HorizontalAlignment="Center" Name="button1" VerticalAlignment="Top" Width="75" Margin="214,0" Command="{Binding Path=DoStart}" />
+        <Button Content="Start!" Grid.Row="1" Height="35" HorizontalAlignment="Center" Name="button1" VerticalAlignment="Top" Width="75" Margin="0,0,0,10" Command="{Binding Path=DoStart}" />
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>
+                <TextBlock Text="{Binding Path=HtmlDownloadError}" />
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>

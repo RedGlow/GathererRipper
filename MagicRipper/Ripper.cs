@@ -31,10 +31,7 @@ namespace MagicRipper
             using (var webClient = new WebClient())
             {
                 webClient.Proxy = null;
-                var page = webClient.DownloadString(
-                    @"http://gatherer.wizards.com/Pages/Advanced.aspx",
-                    Encoding.UTF8);
-                var lines = page.Split('\n');
+                var lines = getLines(webClient, @"http://gatherer.wizards.com/Pages/Advanced.aspx");
                 int i = 0;
                 while (!expansionsStartRegex.IsMatch(lines[i]))
                     i++;
@@ -94,13 +91,12 @@ namespace MagicRipper
                 int realNumCards = 0;
                 for (int currentPage = 0; currentPage < numPages; currentPage++)
                 {
-                    var html = webClient.DownloadString(
+                    var lines = getLines(
+                        webClient,
                         string.Format(
                             "http://gatherer.wizards.com/Pages/Search/Default.aspx?page={1}&action=advanced&output=compact&set=|[%22{0}%22]",
                             HttpUtility.UrlEncode(expansion.Name),
-                            currentPage),
-                            Encoding.UTF8);
-                    var lines = html.Split('\n');
+                            currentPage));
                     
                     int i = 0;
 
@@ -238,11 +234,9 @@ namespace MagicRipper
             int multiverseId, WebClient webClient)
         {
             // get the language page
-            var html = webClient.DownloadString(string.Format(
+            var lines = getLines(webClient, string.Format(
                 "http://gatherer.wizards.com/Pages/Card/Languages.aspx?multiverseid={0}",
-                multiverseId),
-                Encoding.UTF8);
-            var lines = html.Split('\n');
+                multiverseId));
 
             // return the basic english version
             yield return Tuple.Create(Language.English, multiverseId);
@@ -435,12 +429,45 @@ namespace MagicRipper
             return lineNumber;
         }
 
-        private static string[] getLines(WebClient webClient, string url)
+        public event EventHandler<HtmlDownloadErrorEventArgs> HtmlDownloadError;
+
+        public event EventHandler<HtmlDownloadSucceededEventArgs> HtmlDownloadSucceeded;
+
+        private string[] getLines(WebClient webClient, string url)
         {
-            var html = webClient.DownloadString(url,
-                Encoding.UTF8);
-            var lines = html.Split('\n');
-            return lines;
+            string html;
+            int exponentialBackoff = 1;
+            for (; ; )
+                try
+                {
+                    html = webClient.DownloadString(url,
+                        Encoding.UTF8);
+                    break;
+                }
+                catch (Exception e)
+                {
+                    bool ignore = false;
+
+                    var handler = HtmlDownloadError;
+                    if (handler != null)
+                    {
+                        var networkErrorEventArgs = new HtmlDownloadErrorEventArgs(url, e);
+                        handler(this, networkErrorEventArgs);
+                        ignore = networkErrorEventArgs.Ignore;
+                    }
+
+                    if (!ignore)
+                        throw;
+
+                    System.Threading.Thread.Sleep(exponentialBackoff);
+                    exponentialBackoff = Math.Min(exponentialBackoff * 2, 3000);
+                }
+
+            var handlerSuccess = HtmlDownloadSucceeded;
+            if (handlerSuccess != null)
+                handlerSuccess(this, new HtmlDownloadSucceededEventArgs(url));
+
+            return html.Split('\n');
         }
 
         private static string produceUrl(int multiverseId, Language language,

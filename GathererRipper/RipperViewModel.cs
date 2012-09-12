@@ -138,6 +138,18 @@ namespace GathererRipper
 
 
 
+        public string HtmlDownloadError
+        {
+            get { return (string)GetValue(HtmlDownloadErrorProperty); }
+            set { SetValue(HtmlDownloadErrorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HtmlDownloadError.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HtmlDownloadErrorProperty =
+            DependencyProperty.Register("HtmlDownloadError", typeof(string), typeof(RipperViewModel), new UIPropertyMetadata(string.Empty));
+
+
+
         public bool Running
         {
             get { return (bool)GetValue(RunningProperty); }
@@ -198,8 +210,32 @@ namespace GathererRipper
                     // create a db manager
                     var dbManager = new DbManager();
 
-                    // get the expansions
+                    // create the ripper
                     var ripper = new Ripper();
+                    // when there's a connection error, write it
+                    ripper.HtmlDownloadError += new EventHandler<HtmlDownloadErrorEventArgs>(
+                        (object sender, HtmlDownloadErrorEventArgs e) =>
+                        {
+                            runIn(() =>
+                            {
+                                HtmlDownloadError = string.Format(
+                                    "Error while downloading {0}: {1}",
+                                    e.Url, e.Exception.Message);
+                            }, scheduler);
+                            e.Ignore = true;
+                        });
+
+                    // when the download works, just erase any previous error
+                    ripper.HtmlDownloadSucceeded += new EventHandler<HtmlDownloadSucceededEventArgs>(
+                        (object sender, HtmlDownloadSucceededEventArgs e) =>
+                        {
+                            runIn(() =>
+                            {
+                                HtmlDownloadError = string.Empty;
+                            }, scheduler);
+                        });
+
+                    // get the expansions
                     var expansions = ripper.GetExpansions().ToList();
                     runIn(() => { NumExpansions = expansions.Count; }, scheduler);
 
