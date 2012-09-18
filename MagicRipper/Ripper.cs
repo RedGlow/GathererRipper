@@ -11,6 +11,8 @@ namespace MagicRipper
 {
     /// <summary>
     /// Handles the HTML scraping of Gatherer webpages (http://gatherer.wizards.com).
+    /// 
+    /// The Un-sets are not supported.
     /// </summary>
     public class Ripper
     {
@@ -29,9 +31,9 @@ namespace MagicRipper
             new Regex(@".*</div>.*");
 
         /// <summary>
-        /// Get the list of all available expansions.
+        /// Gets the available expansions.
         /// </summary>
-        /// <returns>The list of available expansions.</returns>
+        /// <returns>An enumeration of all the available expansions.</returns>
         public IEnumerable<Set> GetExpansions()
         {
             using (var webClient = new WebClient())
@@ -75,12 +77,29 @@ namespace MagicRipper
         public event EventHandler<SetCardsDownloadingEventArgs>
             ExpansionCardsDownloading;
 
+        /// <summary>
+        /// Occurs just before a card and all its language variants are downloaded.
+        /// </summary>
         public event EventHandler<BaseCardDownloadingEventArgs>
             BaseCardDownloading;
 
+        /// <summary>
+        /// Occurs just before a card is downloaded.
+        /// </summary>
         public event EventHandler<CardDownloadingEventArgs>
             CardDownloading;
 
+        /// <summary>
+        /// Gets all the cards from a single expansion set.
+        /// 
+        /// The cards are returned as an enumeration of collections, as soon as
+        /// they are downloaded. Each collection is a group of cards obtained
+        /// from a single page. Because of this, a single collection is the
+        /// most logical transaction unit, if the data is saved in a database.
+        /// </summary>
+        /// <param name="expansion">The expansion to get the cards from.</param>
+        /// <returns>An enumeration of groups of cards, as they are
+        /// downloaded.</returns>
         public IEnumerable<ICollection<Card>> GetCards(Set expansion)
         {
             bool numCardsCalled = false;
@@ -427,8 +446,15 @@ namespace MagicRipper
             return lineNumber;
         }
 
+        /// <summary>
+        /// Occurs whenever there's an error of any kind while downloading an HTML page.
+        /// </summary>
         public event EventHandler<HtmlDownloadErrorEventArgs> HtmlDownloadError;
 
+        /// <summary>
+        /// Occurs whenever an HTML page is successfully downloaded. Useful to reset
+        /// any error indication caused by a <c>HtmlDownloadError</c>.
+        /// </summary>
         public event EventHandler<HtmlDownloadSucceededEventArgs> HtmlDownloadSucceeded;
 
         private string[] getLines(WebClient webClient, string url)
@@ -438,8 +464,8 @@ namespace MagicRipper
             for (; ; )
                 try
                 {
-                    html = webClient.DownloadString(url,
-                        Encoding.UTF8);
+                    var bytes = webClient.DownloadData(url);
+                    html = Encoding.UTF8.GetString(bytes);
                     break;
                 }
                 catch (Exception e)

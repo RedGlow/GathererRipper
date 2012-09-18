@@ -6,11 +6,26 @@ using System.ComponentModel;
 
 namespace MagicRipper
 {
+    /// <summary>
+    /// Provides some basic data for the events regarding a card.
+    /// </summary>
     public class BaseCardDownloadingEventArgs: CancelEventArgs
     {
+        /// <summary>
+        /// The multiverse ID of the card in its base version (oracle).
+        /// </summary>
         public readonly int BaseMultiverseId;
+
+        /// <summary>
+        /// Name of the part of this card (for multi-part, flip and split cards).
+        /// </summary>
         public readonly string Part;
 
+        /// <summary>
+        /// Create a new BaseCardDownloadingEventArgs.
+        /// </summary>
+        /// <param name="baseMultiverseId">The multiverse ID of the card in its base version (oracle).</param>
+        /// <param name="part">Name of the part of this card (for multi-part, flip and split cards).</param>
         public BaseCardDownloadingEventArgs(int baseMultiverseId, string part)
         {
             BaseMultiverseId = baseMultiverseId;

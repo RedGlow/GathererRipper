@@ -1,2 +1,4 @@
-variants
+image variants
 e.g.: Aesthir Glider ( http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=3041 )
+check for flavors with markup
+is the field "variant" any longer necessary in Card now that we have Part?
