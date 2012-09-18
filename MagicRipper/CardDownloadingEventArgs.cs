@@ -7,7 +7,7 @@ using System.ComponentModel;
 namespace MagicRipper
 {
     /// <summary>
-    /// Provide data for the <c>Ripper.CardDownloading</c> event.
+    /// Provide data for the <see cref="Ripper.CardDownloading"/> event.
     /// </summary>
     public class CardDownloadingEventArgs: BaseCardDownloadingEventArgs
     {

@@ -6,17 +6,22 @@ using System.Text;
 namespace MagicRipper
 {
     /// <summary>
-    /// A card.
-    /// 
+    /// <para>
+    /// A single card.
+    /// </para>
+    /// <para>
     /// The unique identifier of a card is the tuple &lt;BaseMultiverseId, Part, Variant, Language&gt;.
-    /// 
+    /// </para>
+    /// <para>
     /// Mana costs are expressed with a simple markup: every mana symbol is surrounded by curly braces,
     /// and the supported mana symbols are the normal mana symbols (W, R, G, B, U), the hybrid mana
     /// symbols (WR, GU, BR, ..., and 2W, 2R, 2G, 2B, 2U), the phyrexian mana symbols (WP, RP, GP, BP, UP),
     /// and the colorless mana symbols (0, 1, 2, 3, ...).
-    /// 
+    /// </para>
+    /// <para>
     /// The text markup is plain text, except for the tags {-I} and {-/I} to indicate the beginning
     /// and end of italicized text.
+    /// </para>
     /// </summary>
     public class Card
     {
