@@ -9,8 +9,14 @@ using System.Diagnostics;
 
 namespace MagicRipper
 {
+    /// <summary>
+    /// Handles the HTML scraping of Gatherer webpages (http://gatherer.wizards.com).
+    /// </summary>
     public class Ripper
     {
+        /// <summary>
+        /// Create a new Ripper object.
+        /// </summary>
         public Ripper()
         {
         }
@@ -63,11 +69,11 @@ namespace MagicRipper
         private static string cardsEndString =
             "</table";
 
+        /// <summary>
+        /// Occurs just before a set is downloaded.
+        /// </summary>
         public event EventHandler<SetCardsDownloadingEventArgs>
             ExpansionCardsDownloading;
-
-        public event EventHandler<SetCardsDownloadedEventArgs>
-            ExpansionCardsDownloaded;
 
         public event EventHandler<BaseCardDownloadingEventArgs>
             BaseCardDownloading;
@@ -88,7 +94,6 @@ namespace MagicRipper
                 languageWebClient.Proxy = null;
 
                 // run over all pages of current expansion listing
-                int realNumCards = 0;
                 for (int currentPage = 0; currentPage < numPages; currentPage++)
                 {
                     var lines = getLines(
@@ -165,7 +170,6 @@ namespace MagicRipper
                             // got a card (base)
                             var multiverseId = int.Parse(match.Groups[1].Value);
                             var part = match.Groups[2].Value;
-                            realNumCards++;
 
                             var handler = BaseCardDownloading;
                             var downloadVariants = true;
@@ -211,12 +215,6 @@ namespace MagicRipper
                         i++;
                     }
                 }
-
-                // give the real number of cards
-                var handler2 = ExpansionCardsDownloaded;
-                if (handler2 != null)
-                    handler2(this, new SetCardsDownloadedEventArgs(
-                        expansion, realNumCards));
             }
         }
 
