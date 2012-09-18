@@ -8,4 +8,4 @@ Gatherer ripper is a C# solution including two main components:
   
 The library MagicRipper's entry points are the class MagicRipper.Ripper and its methods GetExpansions and GetCards.
 
-The interface saves the database to the local data of the application (on Windows 7, C:\Users\<username>\AppData\Local\GathererRipper).
+The interface saves the database to the local data of the application (on Windows 7, C:\Users\\[username]\AppData\Local\GathererRipper).
