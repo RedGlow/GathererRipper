@@ -21,6 +21,10 @@
     <DocumentationSources>
       <DocumentationSource sourceFile="MagicRipper.csproj" xmlns="" />
     </DocumentationSources>
+    <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Privates, Protected, SealedProtected</VisibleItems>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="MagicRipper" isDocumented="True" xmlns="">The &lt;c&gt;MagicRipper&lt;/c&gt; namespace provides classes that are used to perform an HTML scraping of the Gatherer Magic database.</NamespaceSummaryItem>
+    </NamespaceSummaries>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional
