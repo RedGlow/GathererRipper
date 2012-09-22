@@ -48,7 +48,6 @@
     <Compile Include="HtmlDownloadSucceededEventArgs.cs" />
     <Compile Include="MultipartLanguageCompatibilityException.cs" />
     <Compile Include="HtmlDownloadErrorEventArgs.cs" />
-    <Compile Include="SetCardsDownloadedEventArgs.cs" />
     <Compile Include="Set.cs" />
     <Compile Include="SetCardsDownloadingEventArgs.cs" />
     <Compile Include="Language.cs" />
