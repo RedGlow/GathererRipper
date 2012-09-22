@@ -28,42 +28,42 @@ namespace MagicRipper
         /// <summary>
         /// The multiverse ID of the card.
         /// </summary>
-        public int MultiverseId;
+        public int MultiverseId { get; set; }
 
         /// <summary>
         /// The multiverse ID of the base version of the card (oracle).
         /// </summary>
-        public int BaseMultiverseId;
+        public int BaseMultiverseId { get; set; }
 
         /// <summary>
         /// The name of the part (different from the name for multi-part, split and flip cards).
         /// </summary>
-        public string Part;
+        public string Part { get; set; }
 
         /// <summary>
         /// The name of the card.
         /// </summary>
-        public string Name;
+        public string Name { get; set; }
 
         /// <summary>
         /// The mana cost of the card.
         /// </summary>
-        public string ManaCost;
+        public string ManaCost { get; set; }
 
         /// <summary>
         /// The converted mana cost.
         /// </summary>
-        public int ConvertedManaCost;
+        public int ConvertedManaCost { get; set; }
 
         /// <summary>
         /// A list of all the types of this card.
         /// </summary>
-        public ICollection<string> Types;
+        public ICollection<string> Types { get; set; }
 
         /// <summary>
         /// A list of all the subtypes of this card.
         /// </summary>
-        public ICollection<string> Subtypes;
+        public ICollection<string> Subtypes { get; set; }
 
         private string text = string.Empty;
 
@@ -100,41 +100,41 @@ namespace MagicRipper
         /// <summary>
         /// The power of this card.
         /// </summary>
-        public string Power;
+        public string Power { get; set; }
 
         /// <summary>
         /// The toughness of this card.
         /// </summary>
-        public string Toughness;
+        public string Toughness { get; set; }
 
         /// <summary>
         /// The set this card belongs to.
         /// </summary>
-        public Set Set;
+        public Set Set { get; set; }
 
         /// <summary>
         /// The rarity of this card.
         /// </summary>
-        public Rarity Rarity;
+        public Rarity Rarity { get; set; }
 
         /// <summary>
         /// The collector number of this card.
         /// </summary>
-        public int? Number;
+        public int? Number { get; set; }
 
         /// <summary>
         /// The variant of this card.
         /// </summary>
-        public char? Variant;
+        public char? Variant { get; set; }
 
         /// <summary>
         /// The artist of this card.
         /// </summary>
-        public string Artist;
+        public string Artist { get; set; }
 
         /// <summary>
         /// The language of this card.
         /// </summary>
-        public Language Language;
+        public Language Language { get; set; }
     }
 }
