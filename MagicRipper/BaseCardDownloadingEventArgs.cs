@@ -22,7 +22,7 @@ namespace MagicRipper
         public readonly string Part;
 
         /// <summary>
-        /// Create a new BaseCardDownloadingEventArgs.
+        /// Initializes a new instance of <see cref="BaseCardDownloadingEventArgs"/> class.
         /// </summary>
         /// <param name="baseMultiverseId">The multiverse ID of the card in its base version (oracle).</param>
         /// <param name="part">Name of the part of this card (for multi-part, flip and split cards).</param>
