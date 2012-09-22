@@ -27,6 +27,13 @@ namespace MagicRipper
         /// <param name="inner">A reference to the inner exception that is the cause of this exception.</param>
         public MultipartLanguageCompatibilityException(Exception inner) : base(errorMessage, inner) { }
 
+        /// <summary>
+        /// Instantiates a new instance of the class <see cref="MultipartLanguageCompatibilityException"/>
+        /// with the given <see cref="System.Runtime.Serialization.SerializationInfo.SerializationInfo"/> and
+        /// <see cref="System.Runtime.Serialization.StreamingContext"/>.
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="context"></param>
         protected MultipartLanguageCompatibilityException(
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context)
