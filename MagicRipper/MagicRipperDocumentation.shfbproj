@@ -21,10 +21,26 @@
     <DocumentationSources>
       <DocumentationSource sourceFile="MagicRipper.csproj" xmlns="" />
     </DocumentationSources>
-    <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Privates, Protected, SealedProtected</VisibleItems>
+    <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected</VisibleItems>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="MagicRipper" isDocumented="True" xmlns="">The &lt;c&gt;MagicRipper&lt;/c&gt; namespace provides classes that are used to perform an HTML scraping of the Gatherer Magic database.</NamespaceSummaryItem>
     </NamespaceSummaries>
+    <BuildAssemblerVerbosity>AllMessages</BuildAssemblerVerbosity>
+    <HelpFileFormat>HtmlHelp1</HelpFileFormat>
+    <IndentHtml>False</IndentHtml>
+    <FrameworkVersion>.NET 4.0.30319</FrameworkVersion>
+    <KeepLogFile>False</KeepLogFile>
+    <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
+    <CppCommentsFixup>True</CppCommentsFixup>
+    <CleanIntermediates>True</CleanIntermediates>
+    <SyntaxFilters>CSharp</SyntaxFilters>
+    <SdkLinkTarget>Blank</SdkLinkTarget>
+    <RootNamespaceContainer>False</RootNamespaceContainer>
+    <PresentationStyle>vs2010</PresentationStyle>
+    <Preliminary>False</Preliminary>
+    <NamingMethod>Guid</NamingMethod>
+    <HelpTitle>MagicRipper Documentation</HelpTitle>
+    <ContentPlacement>BelowNamespaces</ContentPlacement>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional
