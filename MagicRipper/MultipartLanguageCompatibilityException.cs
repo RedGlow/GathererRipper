@@ -14,8 +14,19 @@ namespace MagicRipper
     public class MultipartLanguageCompatibilityException : Exception
     {
         private const string errorMessage = "Cannot download a multi-part card in languages different from Oracle.";
+
+        /// <summary>
+        /// Instantiates a new instance of the class <see cref="MultipartLanguageCompatibilityException"/>.
+        /// </summary>
         public MultipartLanguageCompatibilityException() : base(errorMessage) { }
+
+        /// <summary>
+        /// Instantiates a new instance of the class <see cref="MultipartLanguageCompatibilityException"/>
+        /// with the specified exception.
+        /// </summary>
+        /// <param name="inner">A reference to the inner exception that is the cause of this exception.</param>
         public MultipartLanguageCompatibilityException(Exception inner) : base(errorMessage, inner) { }
+
         protected MultipartLanguageCompatibilityException(
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context)
