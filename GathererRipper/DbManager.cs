@@ -147,7 +147,7 @@ namespace GathererRipper
                     card.Toughness,
                     rarityToId[card.Rarity],
                     card.Number,
-                    card.Variant,
+                    card.Variant.HasValue ? (object)card.Variant.Value.ToString() : null,
                     card.Artist,
                     languageToId[card.Language]
                     );
