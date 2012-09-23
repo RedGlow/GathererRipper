@@ -23,7 +23,41 @@
     </DocumentationSources>
     <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected</VisibleItems>
     <NamespaceSummaries>
-      <NamespaceSummaryItem name="MagicRipper" isDocumented="True" xmlns="">The &lt;c&gt;MagicRipper&lt;/c&gt; namespace provides classes that are used to perform an HTML scraping of the Gatherer Magic database.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="MagicRipper" isDocumented="True">The &lt;see href="MagicRipper"/&gt; namespace provides classes that are used to perform an HTML scraping of the Gatherer Magic database.
+
+&lt;remarks&gt;
+&lt;para&gt;
+The central class to refer to is &lt;see href="Ripper"/&gt; and its two methods &lt;see href="Ripper.GetExpansions"/&gt;
+and &lt;see href="Ripper.GetCards"/&gt;.
+&lt;/para&gt;
+&lt;para&gt;
+The most basic usage would be to get first the list of sets, and then for each of them iterate over the cards and download them:
+&lt;/para&gt;
+&lt;code&gt;
+ripper = new Ripper();
+foreach(var set in ripper.GetExpansions())
+  foreach(var cardBlock in ripper.GetCards(set))
+    foreach(var card in cardBlock)
+      Console.WriteLine("Card downloaded: {0}", card.Name);
+&lt;/code&gt;
+&lt;para&gt;
+This pattern is most likely impossible to apply in order to download the whole set of magic cards, since it takes too long a time,
+and network disruptions or the necessity of turning down the system may waste hours of work. Because of this, the
+&lt;c&gt;Ripper&lt;/c&gt; class supports cancellation events in order to decide which cards to download at different
+granularities:
+&lt;list type="bullet"&gt;
+  &lt;item&gt;
+  &lt;description&gt;Set (&lt;see href="Ripper.ExpansionsCardDownloading"/&gt;).&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+  &lt;description&gt;Variations of a single card (&lt;see href="Ripper.BaseCardDownloading"/&gt;).&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+  &lt;description&gt;Card block (&lt;see href="Ripper.CardDownloading"/&gt;).&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;
+&lt;/para&gt;
+&lt;/remarks&gt;</NamespaceSummaryItem>
     </NamespaceSummaries>
     <BuildAssemblerVerbosity>AllMessages</BuildAssemblerVerbosity>
     <HelpFileFormat>HtmlHelp1</HelpFileFormat>
@@ -32,7 +66,7 @@
     <KeepLogFile>False</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <CppCommentsFixup>True</CppCommentsFixup>
-    <CleanIntermediates>True</CleanIntermediates>
+    <CleanIntermediates>False</CleanIntermediates>
     <SyntaxFilters>CSharp</SyntaxFilters>
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <RootNamespaceContainer>False</RootNamespaceContainer>

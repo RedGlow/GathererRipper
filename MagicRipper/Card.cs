@@ -6,9 +6,9 @@ using System.Text;
 namespace MagicRipper
 {
     /// <summary>
-    /// <para>
     /// A single card.
-    /// </para>
+    /// </summary>
+    /// <remarks>
     /// <para>
     /// The unique identifier of a card is the tuple &lt;BaseMultiverseId, Part, Variant, Language&gt;.
     /// </para>
@@ -22,7 +22,7 @@ namespace MagicRipper
     /// The text markup is plain text, except for the tags {-I} and {-/I} to indicate the beginning
     /// and end of italicized text.
     /// </para>
-    /// </summary>
+    /// </remarks>
     public class Card
     {
         /// <summary>
