@@ -109,6 +109,11 @@ namespace GathererRipper
                 cachedConnection = new SQLiteConnection(
                     string.Format("Data Source={0}; Version=3;", DatabasePath));
                 cachedConnection.Open();
+                using (var command = cachedConnection.CreateCommand())
+                {
+                    command.CommandText = "PRAGMA foreign_keys = ON";
+                    command.ExecuteNonQuery();
+                }
                 if (!databaseExists)
                     createDatabaseIfNotExists(cachedConnection);
             }
@@ -147,24 +152,24 @@ namespace GathererRipper
                     card.Toughness,
                     rarityToId[card.Rarity],
                     card.Number,
-                    card.Variant.HasValue ? (object)card.Variant.Value.ToString() : null,
+                    card.Variant.HasValue ? (object)card.Variant.Value.ToString() : string.Empty,
                     card.Artist,
                     languageToId[card.Language]
                     );
                 command.ExecuteNonQuery();
 
-                addCardTags(command, card.MultiverseId,
+                addCardTags(command, card.BaseMultiverseId,
                     card.Part, card.Variant, card.Language,
                     card.Types, "Type");
 
-                addCardTags(command, card.MultiverseId,
+                addCardTags(command, card.BaseMultiverseId,
                     card.Part, card.Variant, card.Language,
                     card.Subtypes, "Subtype");
             }
         }
 
         private void addCardTags(DbCommand command,
-            int multiverseId, string part, char? variant, Language language,
+            int baseMultiverseId, string part, char? variant, Language language,
             ICollection<string> tags, string tagName)
         {
             var addCardTag = string.Format(
@@ -173,8 +178,9 @@ namespace GathererRipper
             foreach (var tag in tags)
             {
                 command.CommandText = addCardTag;
-                command.setParameters(multiverseId, part,
-                    variant, languageToId[language],
+                command.setParameters(baseMultiverseId, part,
+                    variant.HasValue ? (object)variant.Value.ToString() : string.Empty,
+                    languageToId[language],
                     tag);
                 command.ExecuteNonQuery();
             }
