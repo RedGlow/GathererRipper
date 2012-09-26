@@ -146,6 +146,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Icon.ico" />
     <Content Include="Resources\DatabaseSchema.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
