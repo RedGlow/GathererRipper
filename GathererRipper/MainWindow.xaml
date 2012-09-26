@@ -2,7 +2,112 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:my="clr-namespace:GathererRipper"
-        Title="Gatherer Ripper" Height="350" Width="525" SizeToContent="Height" DataContext="{StaticResource Ripper}" Icon="/GathererRipper;component/Images/Icon.ico">
+        Title="Gatherer Ripper" Height="350" Width="525" SizeToContent="Height" DataContext="{StaticResource Ripper}"
+        >
+    <Window.Icon>
+        <!-- produced by SVG2XAML Browser from Images\Icon.svg -->
+        <DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <DrawingImage.Drawing>
+                <DrawingGroup Opacity="1">
+                    <DrawingGroup.Children>
+                        <DrawingGroup Opacity="1">
+                            <DrawingGroup.Transform>
+                                <TranslateTransform X="-7.6714788" Y="33.324307" />
+                            </DrawingGroup.Transform>
+                        </DrawingGroup>
+                        <DrawingGroup Opacity="1">
+                            <DrawingGroup.Transform>
+                                <TranslateTransform X="-7.6714788" Y="33.324307" />
+                            </DrawingGroup.Transform>
+                        </DrawingGroup>
+                        <DrawingGroup Opacity="1">
+                            <DrawingGroup.Transform>
+                                <TranslateTransform X="-7.6714788" Y="33.324307" />
+                            </DrawingGroup.Transform>
+                        </DrawingGroup>
+                        <DrawingGroup Opacity="1">
+                            <DrawingGroup.Transform>
+                                <TranslateTransform X="-7.6714788" Y="33.324307" />
+                            </DrawingGroup.Transform>
+                        </DrawingGroup>
+                        <DrawingGroup Opacity="1">
+                            <DrawingGroup.Transform>
+                                <TranslateTransform X="-7.6714788" Y="33.324307" />
+                            </DrawingGroup.Transform>
+                        </DrawingGroup>
+                        <DrawingGroup Opacity="1">
+                            <DrawingGroup.Transform>
+                                <TranslateTransform X="-7.6714788" Y="33.324307" />
+                            </DrawingGroup.Transform>
+                        </DrawingGroup>
+                        <DrawingGroup Opacity="1">
+                            <DrawingGroup.Children>
+                                <GeometryDrawing Brush="#FFEB4545">
+                                    <GeometryDrawing.Pen>
+                                        <Pen Brush="#FF000000" Thickness="2.5" />
+                                    </GeometryDrawing.Pen>
+                                    <GeometryDrawing.Geometry>
+                                        <PathGeometry FillRule="Nonzero" Figures="M47.506763458252,-12.5310049057007C52.3839073181152,-12.1721744537354 57.5629119873047,-9.41398429870605 61.8718452453613,-4.06333255767822 61.8718452453613,-4.06333208084106 78.5393600463867,9.44745826721191 78.4130935668945,16.2659873962402L78.6656265258789,28.3878192901611 56.3160057067871,78.8954467773438 35.9866828918457,81.4208297729492C21.7182788848877,91.1435470581055 5.30330085754395,79.9055938720703 9.59644889831543,64.2482376098633 9.59644889831543,64.2482376098633 35.6078758239746,32.1758918762207 31.0621910095215,4.77550315856934 32.0881271362305,-7.06222200393677 39.3781929016113,-13.129056930542 47.506763458252,-12.5310049057007z" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FFBEBEBE">
+                                    <GeometryDrawing.Pen>
+                                        <Pen Brush="#FF000000" Thickness="2.5" />
+                                    </GeometryDrawing.Pen>
+                                    <GeometryDrawing.Geometry>
+                                        <PathGeometry FillRule="Nonzero" Figures="M78.2868194580078,16.2659873962402C78.2868194580078,16.2659873962402,100.888977050781,33.4385795593262,133.971481323242,21.6955585479736L135.865509033203,29.5242404937744 143.567932128906,33.0597724914551C134.097747802734,46.9493713378906,115.409927368164,57.8085136413574,115.409927368164,57.8085136413574L79.2969741821289,30.7869300842285 78.2868194580078,16.2659873962402z" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FFBEBEBE">
+                                    <GeometryDrawing.Pen>
+                                        <Pen Brush="#FF000000" Thickness="2.5" />
+                                    </GeometryDrawing.Pen>
+                                    <GeometryDrawing.Geometry>
+                                        <PathGeometry FillRule="Nonzero" Figures="M78.7919006347656,23.0845184326172C78.7919006347656,23.0845184326172,98.9949493408203,51.2425193786621,122.859802246094,57.1771659851074L121.344581604004,65.8897247314453 127.405487060547,73.4658737182617C127.405487060547,73.4658737182617,105.055862426758,82.4309768676758,91.7976150512695,83.819938659668L72.3521728515625,29.3979721069336 78.7919006347656,23.0845184326172z" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FFBEBEBE">
+                                    <GeometryDrawing.Pen>
+                                        <Pen Brush="#FF000000" Thickness="2.5" />
+                                    </GeometryDrawing.Pen>
+                                    <GeometryDrawing.Geometry>
+                                        <PathGeometry FillRule="Nonzero" Figures="M72.8707046508789,16.1861724853516C75.0678863525391,16.2454700469971 77.2379150390625,17.2558250427246 78.0357131958008,19.4702434539795 80.3245391845703,28.0304336547852 82.6133575439453,36.590633392334 84.9021835327148,45.1508331298828 85.6271743774414,48.623462677002 87.3042602539063,51.9793930053711 86.9017715454102,55.5870742797852 87.120735168457,61.8757667541504 87.1177520751953,68.797607421875 90.9741668701172,74.0939407348633 94.7202529907227,79.5603332519531 98.2599868774414,85.6048889160156 103.928573608398,89.2916793823242 102.976188659668,91.9107284545898 101.130950927734,94.5297698974609 100.178573608398,97.1488189697266L103.214286804199,106.434532165527C95.4045333862305,106.376449584961 87.736083984375,104.586242675781 80.2088012695313,102.654930114746 70.069465637207,99.7731323242188 59.7557373046875,96.7031402587891 50.7619552612305,91.0639724731445 48.4063568115234,89.3295669555664 46.0784606933594,87.2529907226563 45.6841773986816,84.1968536376953 42.5985298156738,73.2626571655273 39.3064231872559,62.3722877502441 36.350456237793,51.4105529785156 35.443042755127,46.8732147216797 36.6183929443359,41.9021415710449 40.3048400878906,38.8822212219238 50.4413223266602,31.3996524810791 60.5778045654297,23.9170932769775 70.7142868041992,16.4345245361328 71.4029006958008,16.2523136138916 72.138313293457,16.1664066314697 72.8707046508789,16.1861724853516z" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FFEB4545">
+                                    <GeometryDrawing.Pen>
+                                        <Pen Brush="#FF000000" Thickness="2.5" />
+                                    </GeometryDrawing.Pen>
+                                    <GeometryDrawing.Geometry>
+                                        <PathGeometry FillRule="Nonzero" Figures="M104.212532043457,89.2051162719727C104.212532043457,89.2051162719727,135.313552856445,94.0588531494141,139.962707519531,99.6566314697266L136.343444824219,100.32984161377C136.343444824219,100.32984161377 142.327239990234,101.948081970215 142.465606689453,103.781379699707 127.566276550293,102.262016296387 116.085716247559,102.709587097168 103.511131286621,106.180717468262L104.212532043457,89.2051162719727z" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FFEB4545">
+                                    <GeometryDrawing.Pen>
+                                        <Pen Brush="#FF000000" Thickness="2.5" />
+                                    </GeometryDrawing.Pen>
+                                    <GeometryDrawing.Geometry>
+                                        <PathGeometry FillRule="Nonzero" Figures="M149.660217285156,54.0008659362793C153.169479370117,53.9877014160156,156.05256652832,54.3040771484375,157.502136230469,55.171142578125L154.540145874023,56.8771362304688C154.540145874023,56.8771362304688 160.279754638672,56.4485549926758 160.966445922852,58.0114097595215 147.44938659668,61.2767143249512 137.420333862305,66.1269302368164 127.478607177734,73.0456466674805L122.969276428223,57.0456809997559C122.969276428223,57.0456809997559,139.132476806641,54.040355682373,149.660217285156,54.0008659362793z" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FFEB4545">
+                                    <GeometryDrawing.Pen>
+                                        <Pen Brush="#FF000000" Thickness="2.5" />
+                                    </GeometryDrawing.Pen>
+                                    <GeometryDrawing.Geometry>
+                                        <PathGeometry FillRule="Nonzero" Figures="M162.393478393555,7.65336513519287L160.509307861328,10.1280355453491C160.509307861328,10.1280345916748 165.173873901367,7.74670505523682 166.300506591797,8.81606292724609 156.109909057617,16.3169593811035 149.244735717773,23.3095436096191 143.340744018555,32.6162567138672L134.080795288086,21.3901214599609C134.080795288086,21.3901214599609,156.307052612305,6.78592205047607,162.393478393555,7.65336513519287z" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                            </DrawingGroup.Children>
+                            <DrawingGroup.Transform>
+                                <TranslateTransform X="-7.6714788" Y="33.324307" />
+                            </DrawingGroup.Transform>
+                        </DrawingGroup>
+                    </DrawingGroup.Children>
+                </DrawingGroup>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </Window.Icon>
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <my:BooleanToProgressStateConverter x:Key="BooleanToProgressStateConverter" />
