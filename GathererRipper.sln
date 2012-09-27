@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicRipper", "MagicRipper\
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "MagicRipperDocumentation", "MagicRipper\MagicRipperDocumentation.shfbproj", "{EEC11B7A-5A28-4C30-9E8F-7BDBEF37254D}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{452E4DF6-35BD-4126-A49A-81CF7BC6F180}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -36,7 +38,12 @@ Global
 		{EEC11B7A-5A28-4C30-9E8F-7BDBEF37254D}.Release|x64.ActiveCfg = Release|Any CPU
 		{EEC11B7A-5A28-4C30-9E8F-7BDBEF37254D}.Release|x64.Build.0 = Release|Any CPU
 		{EEC11B7A-5A28-4C30-9E8F-7BDBEF37254D}.Release|x86.ActiveCfg = Release|Any CPU
-		{EEC11B7A-5A28-4C30-9E8F-7BDBEF37254D}.Release|x86.Build.0 = Release|Any CPU
+		{452E4DF6-35BD-4126-A49A-81CF7BC6F180}.Debug|x64.ActiveCfg = Debug
+		{452E4DF6-35BD-4126-A49A-81CF7BC6F180}.Debug|x86.ActiveCfg = Debug
+		{452E4DF6-35BD-4126-A49A-81CF7BC6F180}.Release|x64.ActiveCfg = Release
+		{452E4DF6-35BD-4126-A49A-81CF7BC6F180}.Release|x64.Build.0 = Release
+		{452E4DF6-35BD-4126-A49A-81CF7BC6F180}.Release|x86.ActiveCfg = Release
+		{452E4DF6-35BD-4126-A49A-81CF7BC6F180}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
