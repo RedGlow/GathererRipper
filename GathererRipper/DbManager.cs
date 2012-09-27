@@ -17,8 +17,9 @@ namespace GathererRipper
         private Dictionary<Language, int> languageToId
             = new Dictionary<Language, int>();
 
-        public DbManager()
+        public DbManager(string path)
         {
+            DatabasePath = path;
             using (var command = connection.CreateCommand())
             {
                 fillEnumTable<Rarity>(command, rarityToId);
@@ -77,29 +78,7 @@ namespace GathererRipper
             }
         }
 
-        public static string BasePath
-        {
-            get
-            {
-                var basePath = System.IO.Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    "GathererRipper");
-                if (!File.Exists(basePath))
-                    Directory.CreateDirectory(basePath);
-                return basePath;
-            }
-        }
-
-        public static string DatabasePath
-        {
-            get
-            {
-                var basePath = BasePath;
-                return System.IO.Path.Combine(
-                    basePath,
-                    "GathererRipper.sqlite");
-            }
-        }
+        public string DatabasePath { get; private set; }
 
         private void openConnection()
         {

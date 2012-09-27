@@ -139,7 +139,19 @@
             <Label Content="{Binding Path=CurrentlyProcessedCardLanguage}" Grid.Row="4" Name="label3" HorizontalAlignment="Center" FontSize="9" />
             <ProgressBar Grid.Row="5" Name="progressBar2" Height="50" Value="{Binding Path=CurrentlyProcessedCardNumber}" Maximum="{Binding Path=CurrentlyProcessedCardsNumber}" />
         </Grid>
-        <Button Content="Start!" Grid.Row="1" Height="35" HorizontalAlignment="Center" Name="button1" VerticalAlignment="Top" Width="75" Margin="0,0,0,10" Command="{Binding Path=DoStart}" />
+        <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,10" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding Path=DatabasePath}" />
+            <Button Grid.Column="1" Margin="5,0,0,0" Click="chooseDatabaseButton_Click" Name="chooseDatabaseButton" Width="30" Content="..." IsEnabled="{Binding Path=IsEnabled, ElementName=startButton}"></Button>
+            <Button Grid.Row="1" Grid.ColumnSpan="2" Content="Start!" Height="35" Width="75" Command="{Binding Path=DoStart}" Margin="0,5,0,0" HorizontalAlignment="Right" Name="startButton" />
+        </Grid>
         <StatusBar Grid.Row="2">
             <StatusBarItem>
                 <TextBlock Text="{Binding Path=HtmlDownloadError}" />

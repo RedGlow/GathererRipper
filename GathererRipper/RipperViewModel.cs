@@ -16,6 +16,9 @@ namespace GathererRipper
         public RipperViewModel()
         {
             startCommand = new StartCommand(this);
+            DatabasePath = System.IO.Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                "Gatherer.db");
         }
 
 
@@ -162,6 +165,18 @@ namespace GathererRipper
 
 
 
+        public string DatabasePath
+        {
+            get { return (string)GetValue(DatabasePathProperty); }
+            set { SetValue(DatabasePathProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for DatabasePath.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DatabasePathProperty =
+            DependencyProperty.Register("DatabasePath", typeof(string), typeof(RipperViewModel), new UIPropertyMetadata(string.Empty));
+
+        
+
         private class StartCommand : ICommand
         {
             RipperViewModel parent;
@@ -205,10 +220,11 @@ namespace GathererRipper
         {
             Running = true;
             var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+            var databasePath = DatabasePath;
             Task.Factory.StartNew(() =>
                 {
                     // create a db manager
-                    var dbManager = new DbManager();
+                    var dbManager = new DbManager(databasePath);
 
                     // create the ripper
                     var ripper = new Ripper();

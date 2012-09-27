@@ -22,6 +22,28 @@ namespace GathererRipper
         public MainWindow()
         {
             InitializeComponent();
+
+            // Configure save file dialog box
+            chooseDatabaseDialog.FileName = "Gatherer"; // Default file name
+            chooseDatabaseDialog.DefaultExt = ".db"; // Default file extension
+            chooseDatabaseDialog.OverwritePrompt = false; // Can choose an existing file
+            chooseDatabaseDialog.Filter = "Database files (.db)|*.db|All files|*.*"; // Filter files by extension 
         }
+
+        private Microsoft.Win32.SaveFileDialog chooseDatabaseDialog = new Microsoft.Win32.SaveFileDialog();
+
+        private void chooseDatabaseButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Show save file dialog box
+            var result = chooseDatabaseDialog.ShowDialog();
+
+            // Process save file dialog box results 
+            if (result == true)
+            {
+                // Save choice
+                ((RipperViewModel)App.Current.Resources["Ripper"]).DatabasePath = chooseDatabaseDialog.FileName;
+            }
+        }
+
     }
 }
