@@ -312,7 +312,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Gatherer Ripper"
         "ProductCode" = "8:{D61326CA-D85D-4228-8B5A-538955441F23}"
-        "PackageCode" = "8:{C0B68192-7D59-4074-898C-B424BCD27251}"
+        "PackageCode" = "8:{9D8B0617-0D29-457D-B339-CC69407E4DFC}"
         "UpgradeCode" = "8:{1BF89E19-94B0-462D-917A-FA6E2BE5C342}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -442,20 +442,6 @@
             "Transitive" = "11:FALSE"
             "Target" = "8:_3C66B02716704CCBA7EF870DC1C764E4"
             "Folder" = "8:_3091E617DF0A4DF69A17DF1E4BF4C8EC"
-            "WorkingFolder" = "8:_B7E5F9C537AF4A54890DC7CF98D591D2"
-            "Icon" = "8:_61D6DAAF8EB141A48A1E1F6EC7A1190C"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_49BECEA335EE460380028ECEC792CF27"
-            {
-            "Name" = "8:Gatherer Ripper"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_3C66B02716704CCBA7EF870DC1C764E4"
-            "Folder" = "8:_EFCDE3FFA6F843AD852445D2140B486C"
             "WorkingFolder" = "8:_B7E5F9C537AF4A54890DC7CF98D591D2"
             "Icon" = "8:_61D6DAAF8EB141A48A1E1F6EC7A1190C"
             "Feature" = "8:"
@@ -661,7 +647,7 @@
                 {
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_35BD4F8D11DA4ED8A91DD2B03E673B10"
                     {
-                    "Sequence" = "3:300"
+                    "Sequence" = "3:400"
                     "DisplayName" = "8:Confirm Installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -731,7 +717,7 @@
                     }
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_C82B4D69CF784C3987D86B1D614C5BE2"
                     {
-                    "Sequence" = "3:200"
+                    "Sequence" = "3:300"
                     "DisplayName" = "8:Installation Folder"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
