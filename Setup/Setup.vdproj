@@ -27,6 +27,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_61D6DAAF8EB141A48A1E1F6EC7A1190C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7CF0ACD2905A2DCB16A041DCE7F16ECB"
         "OwnerKey" = "8:_3C66B02716704CCBA7EF870DC1C764E4"
         "MsmSig" = "8:_UNDEFINED"
@@ -40,7 +46,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F26C991645BFF18603DE015D6A29F20D"
+        "OwnerKey" = "8:_3C66B02716704CCBA7EF870DC1C764E4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -52,7 +58,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3C66B02716704CCBA7EF870DC1C764E4"
+        "OwnerKey" = "8:_F26C991645BFF18603DE015D6A29F20D"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -73,6 +79,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -89,6 +103,27 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -122,6 +157,26 @@
             {
             "SourcePath" = "8:..\\MagicRipper\\Help\\Documentation.chm"
             "TargetName" = "8:Documentation.chm"
+            "Tag" = "8:"
+            "Folder" = "8:_B7E5F9C537AF4A54890DC7CF98D591D2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_61D6DAAF8EB141A48A1E1F6EC7A1190C"
+            {
+            "SourcePath" = "8:..\\GathererRipper\\Icon.ico"
+            "TargetName" = "8:Icon.ico"
             "Tag" = "8:"
             "Folder" = "8:_B7E5F9C537AF4A54890DC7CF98D591D2"
             "Condition" = "8:"
@@ -255,26 +310,26 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Setup"
-        "ProductCode" = "8:{FF23D4C5-2E53-44A7-A2B5-9BD73D88524B}"
-        "PackageCode" = "8:{C0D163A0-91E3-4D84-BF3E-F7B5D5AEE5C0}"
+        "ProductName" = "8:Gatherer Ripper"
+        "ProductCode" = "8:{D61326CA-D85D-4228-8B5A-538955441F23}"
+        "PackageCode" = "8:{C0B68192-7D59-4074-898C-B424BCD27251}"
         "UpgradeCode" = "8:{1BF89E19-94B0-462D-917A-FA6E2BE5C342}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Hewlett-Packard Company"
+        "ProductVersion" = "8:0.1.0"
+        "Manufacturer" = "8:Mattia Belletti"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Setup"
+        "Title" = "8:Gatherer Ripper Setup"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Hewlett-Packard Company"
+        "ARPCONTACT" = "8:Mattia Belletti"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:"
+        "ARPCOMMENTS" = "8:A simple application to produce a SQLite database out of the HTML scraping of the Gatherer website"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_61D6DAAF8EB141A48A1E1F6EC7A1190C"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -388,7 +443,21 @@
             "Target" = "8:_3C66B02716704CCBA7EF870DC1C764E4"
             "Folder" = "8:_3091E617DF0A4DF69A17DF1E4BF4C8EC"
             "WorkingFolder" = "8:_B7E5F9C537AF4A54890DC7CF98D591D2"
-            "Icon" = "8:"
+            "Icon" = "8:_61D6DAAF8EB141A48A1E1F6EC7A1190C"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_49BECEA335EE460380028ECEC792CF27"
+            {
+            "Name" = "8:Gatherer Ripper"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_3C66B02716704CCBA7EF870DC1C764E4"
+            "Folder" = "8:_EFCDE3FFA6F843AD852445D2140B486C"
+            "WorkingFolder" = "8:_B7E5F9C537AF4A54890DC7CF98D591D2"
+            "Icon" = "8:_61D6DAAF8EB141A48A1E1F6EC7A1190C"
             "Feature" = "8:"
             }
         }
@@ -874,34 +943,6 @@
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_98F65168D7EB4ACE828874EBCF774F8E"
-            {
-            "SourcePath" = "8:"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_B7E5F9C537AF4A54890DC7CF98D591D2"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:LocalizedResourceDlls"
-            "OutputProjectGuid" = "8:{A2C0EDB3-7CA8-4B98-849F-8C3AC966E376}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9E3E4E6EDA5C45EBAEDE7E0F93ADCAF5"
             {
             "SourcePath" = "8:"
@@ -953,34 +994,6 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{EEC11B7A-5A28-4C30-9E8F-7BDBEF37254D}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_DDE3C0B90883425EBF9DFC57E4813068"
-            {
-            "SourcePath" = "8:"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_B7E5F9C537AF4A54890DC7CF98D591D2"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:ContentFiles"
-            "OutputProjectGuid" = "8:{A2C0EDB3-7CA8-4B98-849F-8C3AC966E376}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
