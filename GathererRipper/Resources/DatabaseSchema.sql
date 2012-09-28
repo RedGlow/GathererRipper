@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS Card (
 
 	PRIMARY KEY(BaseMultiverseId, Part, Variant, LanguageId),
 
-	UNIQUE(MultiverseId, Variant, LanguageId)
+	UNIQUE(MultiverseId, Part, Variant, LanguageId)
 );
 
 CREATE INDEX CardSetLanguage ON Card(SetName, LanguageId);
