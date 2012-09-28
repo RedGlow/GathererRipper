@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicRipper", "MagicRipper\
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "MagicRipperDocumentation", "MagicRipper\MagicRipperDocumentation.shfbproj", "{EEC11B7A-5A28-4C30-9E8F-7BDBEF37254D}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{452E4DF6-35BD-4126-A49A-81CF7BC6F180}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup64", "Setup64\Setup64.vdproj", "{F69F74EC-6623-49FF-B3C1-3CB1DA989CB2}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup32", "Setup32\Setup32.vdproj", "{AEEF6ACA-A0EB-4967-A3A1-4AEB7B72BF0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,14 +38,19 @@ Global
 		{EEC11B7A-5A28-4C30-9E8F-7BDBEF37254D}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{EEC11B7A-5A28-4C30-9E8F-7BDBEF37254D}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{EEC11B7A-5A28-4C30-9E8F-7BDBEF37254D}.Release|x64.ActiveCfg = Release|Any CPU
-		{EEC11B7A-5A28-4C30-9E8F-7BDBEF37254D}.Release|x64.Build.0 = Release|Any CPU
 		{EEC11B7A-5A28-4C30-9E8F-7BDBEF37254D}.Release|x86.ActiveCfg = Release|Any CPU
-		{452E4DF6-35BD-4126-A49A-81CF7BC6F180}.Debug|x64.ActiveCfg = Debug
-		{452E4DF6-35BD-4126-A49A-81CF7BC6F180}.Debug|x86.ActiveCfg = Debug
-		{452E4DF6-35BD-4126-A49A-81CF7BC6F180}.Release|x64.ActiveCfg = Release
-		{452E4DF6-35BD-4126-A49A-81CF7BC6F180}.Release|x64.Build.0 = Release
-		{452E4DF6-35BD-4126-A49A-81CF7BC6F180}.Release|x86.ActiveCfg = Release
-		{452E4DF6-35BD-4126-A49A-81CF7BC6F180}.Release|x86.Build.0 = Release
+		{F69F74EC-6623-49FF-B3C1-3CB1DA989CB2}.Debug|x64.ActiveCfg = Debug
+		{F69F74EC-6623-49FF-B3C1-3CB1DA989CB2}.Debug|x86.ActiveCfg = Debug
+		{F69F74EC-6623-49FF-B3C1-3CB1DA989CB2}.Release|x64.ActiveCfg = Release
+		{F69F74EC-6623-49FF-B3C1-3CB1DA989CB2}.Release|x64.Build.0 = Release
+		{F69F74EC-6623-49FF-B3C1-3CB1DA989CB2}.Release|x86.ActiveCfg = Release
+		{F69F74EC-6623-49FF-B3C1-3CB1DA989CB2}.Release|x86.Build.0 = Release
+		{AEEF6ACA-A0EB-4967-A3A1-4AEB7B72BF0A}.Debug|x64.ActiveCfg = Debug
+		{AEEF6ACA-A0EB-4967-A3A1-4AEB7B72BF0A}.Debug|x86.ActiveCfg = Debug
+		{AEEF6ACA-A0EB-4967-A3A1-4AEB7B72BF0A}.Release|x64.ActiveCfg = Release
+		{AEEF6ACA-A0EB-4967-A3A1-4AEB7B72BF0A}.Release|x64.Build.0 = Release
+		{AEEF6ACA-A0EB-4967-A3A1-4AEB7B72BF0A}.Release|x86.ActiveCfg = Release
+		{AEEF6ACA-A0EB-4967-A3A1-4AEB7B72BF0A}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
