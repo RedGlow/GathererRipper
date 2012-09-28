@@ -19,7 +19,7 @@
     <HtmlHelpName>Documentation</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
-      <DocumentationSource sourceFile="MagicRipper.csproj" xmlns="" />
+      <DocumentationSource sourceFile="..\MagicRipper\MagicRipper.csproj" xmlns="" />
     </DocumentationSources>
     <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected</VisibleItems>
     <NamespaceSummaries>
