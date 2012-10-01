@@ -28,6 +28,17 @@ namespace GathererRipper
             chooseDatabaseDialog.DefaultExt = ".db"; // Default file extension
             chooseDatabaseDialog.OverwritePrompt = false; // Can choose an existing file
             chooseDatabaseDialog.Filter = "Database files (.db)|*.db|All files|*.*"; // Filter files by extension 
+
+            // connect to exception handling
+            ripperViewModel.ExceptionRaised += new EventHandler<ExceptionRaisedEventArgs>(ripperViewModel_ExceptionRaised);
+        }
+
+        private static RipperViewModel ripperViewModel
+        {
+            get
+            {
+                return (RipperViewModel)App.Current.Resources["Ripper"];
+            }
         }
 
         private Microsoft.Win32.SaveFileDialog chooseDatabaseDialog = new Microsoft.Win32.SaveFileDialog();
@@ -41,9 +52,17 @@ namespace GathererRipper
             if (result == true)
             {
                 // Save choice
-                ((RipperViewModel)App.Current.Resources["Ripper"]).DatabasePath = chooseDatabaseDialog.FileName;
+                ripperViewModel.DatabasePath = chooseDatabaseDialog.FileName;
             }
         }
 
+        void ripperViewModel_ExceptionRaised(object sender, ExceptionRaisedEventArgs e)
+        {
+            MessageBox.Show(
+                string.Join("\n", (from exc in e.Exception.InnerExceptions select exc.Message)),
+                "Error in processing",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+        }
     }
 }

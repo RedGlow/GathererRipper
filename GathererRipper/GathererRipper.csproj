@@ -93,6 +93,7 @@
     <Compile Include="BooleanToProgressStateConverter.cs" />
     <Compile Include="DbHelper.cs" />
     <Compile Include="DbManager.cs" />
+    <Compile Include="ExceptionRaisedEventArgs.cs" />
     <Compile Include="RipperViewModel.cs" />
     <Compile Include="SQLResources.Designer.cs">
       <AutoGen>True</AutoGen>

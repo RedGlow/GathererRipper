@@ -215,6 +215,8 @@ namespace GathererRipper
         public ICommand DoStart { get { return startCommand; } }
 
 
+        public event EventHandler<ExceptionRaisedEventArgs> ExceptionRaised;
+
 
         public void Start()
         {
@@ -367,6 +369,12 @@ namespace GathererRipper
                     CurrentlyProcessedCardLanguage = string.Empty;
                     CurrentlyProcessedExpansionName = string.Empty;
                     Running = false;
+                    if (t.Exception != null)
+                    {
+                        var handler = ExceptionRaised;
+                        if (handler != null)
+                            handler(this, new ExceptionRaisedEventArgs(t.Exception));
+                    }
                 }, scheduler);
         }
 
