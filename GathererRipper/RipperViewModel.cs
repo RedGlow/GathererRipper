@@ -252,12 +252,12 @@ namespace GathererRipper
                         });
 
                     // get the expansions
-                    var expansions = ripper.GetExpansions().ToList();
+                    var expansions = ripper.GetSets().ToList();
                     runIn(() => { NumExpansions = expansions.Count; }, scheduler);
 
                     // update number of cards of the expansion when starting a new expansion
-                    ripper.ExpansionCardsDownloading += new EventHandler<SetCardsDownloadingEventArgs>(
-                        (object sender, SetCardsDownloadingEventArgs e) =>
+                    ripper.SetDownloading += new EventHandler<SetDownloadingEventArgs>(
+                        (object sender, SetDownloadingEventArgs e) =>
                         {
                             runIn(() =>
                             {

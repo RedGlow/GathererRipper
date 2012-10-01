@@ -10,14 +10,46 @@ using System.Diagnostics;
 namespace MagicRipper
 {
     /// <summary>
-    /// Handles the HTML scraping of Gatherer webpages (http://gatherer.wizards.com).
-    /// 
-    /// The Un-sets are not supported.
+    /// Handles the HTML scraping of <a href="http://gatherer.wizards.com">Gatherer webpages</a>.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The flow of operations within this class is the following:
+    /// <list type="bullet">
+    /// <item>
+    /// <description>Get all the sets with <see cref="Ripper.GetSets"/>. For each set:</description>
+    /// </item>
+    /// <item>
+    /// <description>Invoke <see cref="Ripper.GetCards"/> to get all the cards.</description>
+    /// </item>
+    /// <item>
+    /// <description><see cref="Ripper.SetDownloading"/> gets called.</description>
+    /// </item>
+    /// <item>
+    /// <description>For each card then:
+    /// <list type="bullet">
+    /// <item>
+    /// <description><see cref="Ripper.BaseCardDownloading"/> gets called.</description>
+    /// </item>
+    /// <item>
+    /// <description><see cref="Ripper.CardDownloading"/> gets called.</description>
+    /// </item>
+    /// </list>
+    /// </description>
+    /// </item>
+    /// </list>
+    /// </para>
+    /// <para>
+    /// During all the steps involving some download, either <see cref="Ripper.HtmlDownloadSucceeded"/> or
+    /// <see cref="Ripper.HtmlDownloadError"/> gets called.</para>
+    /// <para>
+    /// The Un-sets are not supported.
+    /// </para>
+    /// </remarks>
     public class Ripper
     {
         /// <summary>
-        /// Create a new Ripper object.
+        /// Initializes a new instance of <see cref="Ripper"/> class.
         /// </summary>
         public Ripper()
         {
@@ -31,10 +63,10 @@ namespace MagicRipper
             new Regex(@".*</div>.*");
 
         /// <summary>
-        /// Gets the available expansions.
+        /// Gets the available sets.
         /// </summary>
-        /// <returns>An enumeration of all the available expansions.</returns>
-        public IEnumerable<Set> GetExpansions()
+        /// <returns>An enumeration of all the available sets.</returns>
+        public IEnumerable<Set> GetSets()
         {
             using (var webClient = new WebClient())
             {
@@ -74,8 +106,8 @@ namespace MagicRipper
         /// <summary>
         /// Occurs just before a set is downloaded.
         /// </summary>
-        public event EventHandler<SetCardsDownloadingEventArgs>
-            ExpansionCardsDownloading;
+        public event EventHandler<SetDownloadingEventArgs>
+            SetDownloading;
 
         /// <summary>
         /// Occurs just before a card and all its language variants are downloaded.
@@ -95,10 +127,10 @@ namespace MagicRipper
         /// The cards are returned as an enumeration of collections, as soon as
         /// they are downloaded. Each collection is a group of cards obtained
         /// from a single page. Because of this, a single collection is the
-        /// most logical transaction unit, if the data is saved in a database.
+        /// most logical transaction unit.
         /// </summary>
         /// <param name="expansion">The expansion to get the cards from.</param>
-        /// <returns>An enumeration of groups of cards, as they are
+        /// <returns>An enumeration of groups of cards, returned as they are
         /// downloaded.</returns>
         public IEnumerable<ICollection<Card>> GetCards(Set expansion)
         {
@@ -137,9 +169,9 @@ namespace MagicRipper
                                 if (expansion.Name == "Ninth Edition")
                                     numCards--; // Sea Eagle, from 8th edition, appears here
                                                 // too, for some unknown reason
-                                var handler = ExpansionCardsDownloading;
+                                var handler = SetDownloading;
                                 if (handler != null)
-                                    handler(this, new SetCardsDownloadingEventArgs(
+                                    handler(this, new SetDownloadingEventArgs(
                                         expansion, numCards));
                                 numCardsCalled = true;
                                 break;
@@ -453,7 +485,7 @@ namespace MagicRipper
 
         /// <summary>
         /// Occurs whenever an HTML page is successfully downloaded. Useful to reset
-        /// any error indication caused by a <c>HtmlDownloadError</c>.
+        /// any error indication caused by a <see cref="HtmlDownloadError"/>.
         /// </summary>
         public event EventHandler<HtmlDownloadSucceededEventArgs> HtmlDownloadSucceeded;
 
@@ -484,7 +516,7 @@ namespace MagicRipper
                         throw;
 
                     System.Threading.Thread.Sleep(exponentialBackoff);
-                    exponentialBackoff = Math.Min(exponentialBackoff * 2, 3000);
+                    exponentialBackoff = Math.Max(10000, Math.Min(1000, exponentialBackoff * 2));
                 }
 
             var handlerSuccess = HtmlDownloadSucceeded;

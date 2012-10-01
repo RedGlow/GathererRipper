@@ -90,7 +90,7 @@
     <Compile Include="MultipartLanguageCompatibilityException.cs" />
     <Compile Include="HtmlDownloadErrorEventArgs.cs" />
     <Compile Include="Set.cs" />
-    <Compile Include="SetCardsDownloadingEventArgs.cs" />
+    <Compile Include="SetDownloadingEventArgs.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="Rarity.cs" />
     <Compile Include="Ripper.cs" />
