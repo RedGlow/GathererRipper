@@ -598,11 +598,34 @@ namespace MagicRipper
             return ptSplit;
         }
 
+        /// <summary>
+        /// A map between languages and the corresponding name of the land
+        /// type - we need to distinguish it to treat the subtype differently
+        /// (e.g.: "Land - Urza's Mine" has one subtype, "Urza's Mine", and not
+        /// two, "Urza's" and "Mine", as the general rule for subtype would
+        /// say)
+        /// </summary>
+        private static Dictionary<Language, string> landTypes = new Dictionary<Language, string>() {
+            { Language.ChineseSimplified, "地～" },
+            { Language.ChineseTraditional, "地～" },
+            { Language.English, "Land" },
+            { Language.French, "Terrain" },
+            { Language.German, "Land" },
+            { Language.Italian, "Terra" },
+            { Language.Japanese, "土地" },
+            { Language.Korean, "대지" },
+            { Language.Oracle, "Land" },
+            { Language.Portuguese, "Terreno" },
+            { Language.PortugueseBrazil, "Terreno" },
+            { Language.Russian, "Земля" },
+            { Language.Spanish, "Tierra" }
+        };
+
         private static void parseTypesAndSubtypes(Language language, Dictionary<string, string> data, out string[] types, out string[] subtypes)
         {
             var allTypes = data["Types"].Split('—');
             if (allTypes.Length == 1)
-                // frech split
+                // french split
                 allTypes = data["Types"].Split(new string[] { " : - " }, StringSplitOptions.None);
             if (allTypes.Length == 1)
                 // japanese split
@@ -610,7 +633,17 @@ namespace MagicRipper
             if (allTypes.Length == 1)
                 allTypes = data["Types"].Split(new string[] { " - " }, StringSplitOptions.None);
 
-            if (allTypes.Length == 1)
+            if (allTypes[0].Trim().Equals(landTypes[language]))
+            {
+                // special case for lands: subtype is just one (e.g.:
+                // Urza's Mine)
+                types = new string[] { allTypes[0].Trim() };
+                if (allTypes.Length > 1)
+                    subtypes = new string[] { allTypes[1].Trim() };
+                else
+                    subtypes = new string[0];
+            }
+            else if (allTypes.Length == 1)
             {
                 types = allTypes[0].Trim().Split(' ');
                 subtypes = new string[0];
