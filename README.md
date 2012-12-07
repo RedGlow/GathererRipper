@@ -7,3 +7,9 @@ Gatherer ripper is a C# solution including two main components:
   - A simple WPF interface (GathererRipper) for downloading the whole Gatherer into a SQLite database (its content, if you're curious, is about 50 Megabytes and it takes some 48 hours to completely download it)
   
 The library MagicRipper's entry points are the class MagicRipper.Ripper and its methods GetExpansions and GetCards. See the included documentation help file.
+
+### Changelog ###
+
+2012/12/06 - 0.1.0
+
+* First release
